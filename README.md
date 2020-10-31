@@ -5,10 +5,9 @@ A basic clone of IMDB. I am using OMDB API to fetch the details of the movies.
 
 ##Demo - [Here](https://imdbclone.surge.sh)
 
-###This is the sample data returned by API
-<hr>
+#This is the sample data returned by API
 <pre>
-  Actors: "Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth"
+Actors: "Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth"
 ​
 Awards: "Nominated for 1 Oscar. Another 38 wins & 79 nominations."
 ​
