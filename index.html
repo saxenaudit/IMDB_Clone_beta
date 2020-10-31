@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2196f3" />
+    <title>IMDB CLONE</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+      integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: fantasy;
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <h1 style="font-size: 80px; font-family: fantasy; text-align: center">
+      IMDB CLONE
+    </h1>
+    <h3 class="text-center">Get all the details of movie</h3>
+    <br />
+    <br />
+    <!-- take input -->
+    <input
+      style="border-bottom: 1px solid teal"
+      type="text"
+      class="form-control"
+      value="avengers"
+      id="searchTitle"
+      required
+    />
+    <button
+      class="btn btn-warning btn-block bg-info text-white"
+      onclick="getMovie()"
+    >
+      Search
+    </button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <center>
+            <img
+              src=""
+              height="350"
+              width="230"
+              class="img-fluid"
+              alt=""
+              id="poster"
+            />
+          </center>
+        </div>
+        <!-- displaying results -->
+        <div class="col-md-8" style="margin-top: 05px">
+          <p><b>Title</b><br /><i id="Title"></i></p>
+          <p><b>Actors</b><br /><i id="Actors"></i></p>
+          <p><b>Plot</b><br /><i id="Plot"></i></p>
+          <p><b>BoxOffice Collection ($)</b><br /><i id="BoxOffice"></i></p>
+          <p><b>Genre</b><br /><i id="Genre"></i></p>
+          <p><b>imdbRating</b><br /><i id="imdbRating"></i></p>
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <!-- driver code -->
+    <script>
+      async function getMovie() {
+        // fetching details
+        var searchTitle = document.getElementById("searchTitle").value;
+        const api_url =
+          "https://omdbapi.com/?t=" + searchTitle + "&apikey=301346f3";
+
+        const response = await fetch(api_url);
+        const data = await response.json();
+        console.log(data);
+        const {
+          Title,
+          Actors,
+          Plot,
+          Poster,
+          BoxOffice,
+          Genre,
+          imdbRating,
+        } = data;
+        // put data to DOM
+        document.getElementById("Title").textContent = Title;
+        document.getElementById("Actors").textContent = Actors;
+        document.getElementById("Plot").textContent = Plot;
+        document.getElementById("poster").src = Poster;
+
+        document.getElementById("BoxOffice").textContent = BoxOffice;
+        document.getElementById("Genre").textContent = Genre;
+        document.getElementById("imdbRating").textContent = imdbRating;
+
+        console.log(searchTitle);
+      }
+      // call the function
+      getMovie();
+    </script>
+  </body>
+</html>
